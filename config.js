@@ -8,11 +8,17 @@ var path = require('path'),
 
 config = {
     // ### Production
-    // When running Ghost in the wild, use the production environment.
-    // Configure your URL and mail settings here
     production: {
         url: 'https://www.lanaorndorff.com',
-        mail: {},
+        mail: mail: {
+        transport: 'SMTP',
+        options: {
+            service: 'Mailgun',
+            auth: {
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PASS
+            }
+        },
         database: {
             client: 'sqlite3',
             connection: {
