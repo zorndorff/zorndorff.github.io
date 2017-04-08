@@ -10,13 +10,14 @@ config = {
     // ### Production
     production: {
         url: 'https://www.lanaorndorff.com',
-        mail: mail: {
-        transport: 'SMTP',
-        options: {
-            service: 'Mailgun',
-            auth: {
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASS
+        mail: {
+            transport: 'SMTP',
+            options: {
+                service: 'Mailgun',
+                auth: {
+                    user: process.env.MAIL_USER,
+                    pass: process.env.MAIL_PASS
+                }
             }
         },
         database: {
