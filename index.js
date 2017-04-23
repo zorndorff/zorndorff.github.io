@@ -6,6 +6,9 @@ var ghost = require('./core'),
     errors = require('./core/server/errors'),
     parentApp = express();
 
+console.log(__dirname);
+console.dir(process.env);
+
 // Make sure dependencies are installed and file system permissions are correct.
 require('./core/server/utils/startup-check').check();
 
