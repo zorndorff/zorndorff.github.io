@@ -9,7 +9,7 @@ var path = require('path'),
 config = {
     // ### Production
     production: {
-        url: 'https://www.lanaorndorff.com',
+        url: 'http://lana-www.apps.zaco.guru',
         mail: {
             transport: 'SMTP',
             options: {
