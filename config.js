@@ -59,8 +59,10 @@ config = {
             host: '127.0.0.1',
             port: process.env.PORT
         }
-    }
-
+    },
+    // ### Development **(default)**
+    testing: {
+        url: 'http://localhost:2368',
         // #### Database
         // Ghost supports sqlite3 (default), MySQL & PostgreSQL
         database: {
