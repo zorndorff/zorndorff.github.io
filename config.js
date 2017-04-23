@@ -36,29 +36,30 @@ config = {
 
     // ### Development **(default)**
     development: {
-        // The url to use when providing links to the site, E.g. in RSS and email.
-        // Change this to your Ghost blog's published URL.
         url: 'http://localhost:2368',
+        mail: {
+            transport: 'SMTP',
+            options: {
+                service: 'Mailgun',
+                auth: {
+                    user: process.env.MAIL_USER,
+                    pass: process.env.MAIL_PASS
+                }
+            }
+        },
+        database: {
+            client: 'sqlite3',
+            connection: {
+                filename: path.join(__dirname, '/content/data/ghost.db')
+            },
+            debug: false
+        },
 
-        // Example refferer policy
-        // Visit https://www.w3.org/TR/referrer-policy/ for instructions
-        // default 'origin-when-cross-origin',
-        // referrerPolicy: 'origin-when-cross-origin',
-
-        // Example mail config
-        // Visit http://support.ghost.org/mail for instructions
-        // ```
-        //  mail: {
-        //      transport: 'SMTP',
-        //      options: {
-        //          service: 'Mailgun',
-        //          auth: {
-        //              user: '', // mailgun username
-        //              pass: ''  // mailgun password
-        //          }
-        //      }
-        //  },
-        // ```
+        server: {
+            host: '127.0.0.1',
+            port: process.env.PORT
+        }
+    }
 
         // #### Database
         // Ghost supports sqlite3 (default), MySQL & PostgreSQL
