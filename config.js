@@ -9,7 +9,7 @@ console.log('db path in config', path.join(__dirname, '/content/data/ghost.db'))
 config = {
     // ### Production
     production: {
-        url: 'http://lana-www.apps.zaco.guru',
+        url: 'http://www.lanaorndorff.com',
         mail: {
             transport: 'SMTP',
             options: {
