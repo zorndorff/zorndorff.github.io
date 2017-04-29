@@ -5,7 +5,7 @@
 
 var path = require('path'),
     config;
-
+console.log('db path in config', path.join(__dirname, '/content/data/ghost.db'));
 config = {
     // ### Production
     production: {
