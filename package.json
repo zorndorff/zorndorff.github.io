@@ -23,7 +23,7 @@
     "test": "grunt validate --verbose"
   },
   "engines": {
-    "node": "^4.2.0 || ^6.9.0"
+    "node": "6.10.2"
   },
   "dependencies": {
     "amperize": "0.3.4",
@@ -75,10 +75,6 @@
     "uuid": "3.0.0",
     "validator": "6.3.0",
     "xml": "1.0.1"
-  },
-  "optionalDependencies": {
-    "mysql": "2.1.1",
-    "pg": "6.1.2"
   },
   "devDependencies": {
     "grunt": "1.0.1",
