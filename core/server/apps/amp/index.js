@@ -1,15 +1,22 @@
 var router           = require('./lib/router'),
-    registerAmpHelpers  = require('./lib/helpers'),
+    registerHelpers = require('./lib/helpers'),
 
     // Dirty requires
-    config     = require('../../config');
+    config = require('../../config'),
+    settingsCache = require('../../services/settings/cache');
 
 module.exports = {
     activate: function activate(ghost) {
-        registerAmpHelpers(ghost);
-    },
+        var ampRoute = '*/' + config.get('routeKeywords').amp + '/';
 
-    setupRoutes: function setupRoutes(blogRouter) {
-        blogRouter.use('*/' + config.routeKeywords.amp + '/', router);
+        ghost.routeService.registerRouter(ampRoute, function settingsEnabledRouter(req, res, next) {
+            if (settingsCache.get('amp') === true) {
+                return router.apply(this, arguments);
+            }
+
+            next();
+        });
+
+        registerHelpers(ghost);
     }
 };

@@ -2,12 +2,35 @@
 //
 // Figure out which template should be used to render a request
 // based on the templates which are allowed, and what is available in the theme
-var _      = require('lodash'),
-    config = require('../../config');
+// TODO: consider where this should live as it deals with channels, singles, and errors
+var _ = require('lodash'),
+    path = require('path'),
+    config = require('../../config'),
+    themes = require('../../services/themes'),
+    _private = {};
 
-function getActiveThemePaths(activeTheme) {
-    return config.paths.availableThemes[activeTheme];
-}
+/**
+ * ## Get Error Template Hierarchy
+ *
+ * Fetch the ordered list of templates that can be used to render this error statusCode.
+ *
+ * The default is the
+ *
+ * @param {integer} statusCode
+ * @returns {String[]}
+ */
+_private.getErrorTemplateHierarchy = function getErrorTemplateHierarchy(statusCode) {
+    var errorCode = _.toString(statusCode),
+        templateList = ['error'];
+
+    // Add error class template: E.g. error-4xx.hbs or error-5xx.hbs
+    templateList.unshift('error-' + errorCode[0] + 'xx');
+
+    // Add statusCode specific template: E.g. error-404.hbs
+    templateList.unshift('error-' + errorCode);
+
+    return templateList;
+};
 
 /**
  * ## Get Channel Template Hierarchy
@@ -21,7 +44,7 @@ function getActiveThemePaths(activeTheme) {
  * @param {Object} channelOpts
  * @returns {String[]}
  */
-function getChannelTemplateHierarchy(channelOpts) {
+_private.getChannelTemplateHierarchy = function getChannelTemplateHierarchy(channelOpts) {
     var templateList = ['index'];
 
     if (channelOpts.name && channelOpts.name !== 'index') {
@@ -37,32 +60,36 @@ function getChannelTemplateHierarchy(channelOpts) {
     }
 
     return templateList;
-}
+};
 
 /**
- * ## Get Single Template Hierarchy
+ * ## Get Entry Template Hierarchy
  *
  * Fetch the ordered list of templates that can be used to render this request.
  * 'post' is the default / fallback
- * For posts: [post-:slug, post]
- * For pages: [page-:slug, page, post]
+ * For posts: [post-:slug, custom-*, post]
+ * For pages: [page-:slug, custom-*, page, post]
  *
- * @param {Object} single
+ * @param {Object} postObject
  * @returns {String[]}
  */
-function getSingleTemplateHierarchy(single) {
+_private.getEntryTemplateHierarchy = function getEntryTemplateHierarchy(postObject) {
     var templateList = ['post'],
-        type = 'post';
+        slugTemplate = 'post-' + postObject.slug;
 
-    if (single.page) {
+    if (postObject.page) {
         templateList.unshift('page');
-        type = 'page';
+        slugTemplate = 'page-' + postObject.slug;
     }
 
-    templateList.unshift(type + '-' + single.slug);
+    if (postObject.custom_template) {
+        templateList.unshift(postObject.custom_template);
+    }
+
+    templateList.unshift(slugTemplate);
 
     return templateList;
-}
+};
 
 /**
  * ## Pick Template
@@ -70,31 +97,72 @@ function getSingleTemplateHierarchy(single) {
  * Taking the ordered list of allowed templates for this request
  * Cycle through and find the first one which has a match in the theme
  *
- * @param {Object} themePaths
- * @param {Array} templateList
+ * @param {Array|String} templateList
+ * @param {String} fallback - a fallback template
  */
-function pickTemplate(themePaths, templateList) {
-    var template = _.find(templateList, function (template) {
-        return themePaths.hasOwnProperty(template + '.hbs');
-    });
+_private.pickTemplate = function pickTemplate(templateList, fallback) {
+    var template;
+
+    if (!_.isArray(templateList)) {
+        templateList = [templateList];
+    }
+
+    if (!themes.getActive()) {
+        template = fallback;
+    } else {
+        template = _.find(templateList, function (template) {
+            return themes.getActive().hasTemplate(template);
+        });
+    }
 
     if (!template) {
-        template = templateList[templateList.length - 1];
+        template = fallback;
     }
 
     return template;
-}
+};
 
-function getTemplateForSingle(activeTheme, single) {
-    return pickTemplate(getActiveThemePaths(activeTheme), getSingleTemplateHierarchy(single));
-}
+_private.getTemplateForEntry = function getTemplateForEntry(postObject) {
+    var templateList = _private.getEntryTemplateHierarchy(postObject),
+        fallback = templateList[templateList.length - 1];
+    return _private.pickTemplate(templateList, fallback);
+};
 
-function getTemplateForChannel(activeTheme, channelOpts) {
-    return pickTemplate(getActiveThemePaths(activeTheme), getChannelTemplateHierarchy(channelOpts));
-}
+_private.getTemplateForChannel = function getTemplateForChannel(channelOpts) {
+    var templateList = _private.getChannelTemplateHierarchy(channelOpts),
+        fallback = templateList[templateList.length - 1];
+    return _private.pickTemplate(templateList, fallback);
+};
 
-module.exports = {
-    getActiveThemePaths: getActiveThemePaths,
-    channel: getTemplateForChannel,
-    single: getTemplateForSingle
+_private.getTemplateForError = function getTemplateForError(statusCode) {
+    var templateList = _private.getErrorTemplateHierarchy(statusCode),
+        fallback = path.resolve(config.get('paths').defaultViews, 'error.hbs');
+    return _private.pickTemplate(templateList, fallback);
+};
+
+module.exports.setTemplate = function setTemplate(req, res, data) {
+    var routeConfig = res._route || {};
+
+    if (res._template && !req.err) {
+        return;
+    }
+
+    if (req.err) {
+        res._template = _private.getTemplateForError(res.statusCode);
+        return;
+    }
+
+    switch (routeConfig.type) {
+        case 'custom':
+            res._template = _private.pickTemplate(routeConfig.templateName, routeConfig.defaultTemplate);
+            break;
+        case 'channel':
+            res._template = _private.getTemplateForChannel(res.locals.channel);
+            break;
+        case 'entry':
+            res._template = _private.getTemplateForEntry(data.post);
+            break;
+        default:
+            res._template = 'index';
+    }
 };

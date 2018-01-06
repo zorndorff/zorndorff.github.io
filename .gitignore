@@ -58,3 +58,5 @@ typings/
 .env
 
 content/data/ghost-dev.db
+tmp
+ghost-latest.zip

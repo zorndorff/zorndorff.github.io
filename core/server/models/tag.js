@@ -1,6 +1,6 @@
-var _              = require('lodash'),
+var _ = require('lodash'),
     ghostBookshelf = require('./base'),
-    events         = require('../events'),
+    common = require('../lib/common'),
     Tag,
     Tags;
 
@@ -8,30 +8,37 @@ Tag = ghostBookshelf.Model.extend({
 
     tableName: 'tags',
 
+    defaults: function defaults() {
+        return {
+            visibility: 'public'
+        };
+    },
+
     emitChange: function emitChange(event) {
-        events.emit('tag' + '.' + event, this);
+        common.events.emit('tag' + '.' + event, this);
     },
 
-    initialize: function initialize() {
-        ghostBookshelf.Model.prototype.initialize.apply(this, arguments);
-
-        this.on('created', function onCreated(model) {
-            model.emitChange('added');
-        });
-        this.on('updated', function onUpdated(model) {
-            model.emitChange('edited');
-        });
-        this.on('destroyed', function onDestroyed(model) {
-            model.emitChange('deleted');
-        });
+    onCreated: function onCreated(model) {
+        model.emitChange('added');
     },
 
-    saving: function saving(newPage, attr, options) {
-        /*jshint unused:false*/
+    onUpdated: function onUpdated(model) {
+        model.emitChange('edited');
+    },
 
+    onDestroyed: function onDestroyed(model) {
+        model.emitChange('deleted');
+    },
+
+    onSaving: function onSaving(newTag, attr, options) {
         var self = this;
 
-        ghostBookshelf.Model.prototype.saving.apply(this, arguments);
+        ghostBookshelf.Model.prototype.onSaving.apply(this, arguments);
+
+        // name: #later slug: hash-later
+        if (/^#/.test(newTag.get('name'))) {
+            this.set('visibility', 'internal');
+        }
 
         if (this.hasChanged('slug') || !this.get('slug')) {
             // Pass the new slug through the generator to strip illegal characters, detect duplicates

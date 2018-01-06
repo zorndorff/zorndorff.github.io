@@ -1,35 +1,34 @@
-var ghostBookshelf = require('./base'),
-    errors = require('../errors'),
-    events = require('../events'),
-    i18n = require('../i18n'),
-    Promise = require('bluebird'),
-    uuid = require('uuid'),
+var Promise = require('bluebird'),
+    ghostBookshelf = require('./base'),
+    common = require('../lib/common'),
     Subscriber,
     Subscribers;
 
 Subscriber = ghostBookshelf.Model.extend({
     tableName: 'subscribers',
 
-    emitChange: function emitChange(event) {
-        events.emit('subscriber' + '.' + event, this);
+    emitChange: function emitChange(event, options) {
+        options = options || {};
+
+        common.events.emit('subscriber' + '.' + event, this, options);
     },
+
     defaults: function defaults() {
         return {
-            uuid: uuid.v4(),
             status: 'subscribed'
         };
     },
-    initialize: function initialize() {
-        ghostBookshelf.Model.prototype.initialize.apply(this, arguments);
-        this.on('created', function onCreated(model) {
-            model.emitChange('added');
-        });
-        this.on('updated', function onUpdated(model) {
-            model.emitChange('edited');
-        });
-        this.on('destroyed', function onDestroyed(model) {
-            model.emitChange('deleted');
-        });
+
+    onCreated: function onCreated(model, response, options) {
+        model.emitChange('added', options);
+    },
+
+    onUpdated: function onUpdated(model, response, options) {
+        model.emitChange('edited', options);
+    },
+
+    onDestroyed: function onDestroyed(model, response, options) {
+        model.emitChange('deleted', options);
     }
 }, {
 
@@ -60,7 +59,7 @@ Subscriber = ghostBookshelf.Model.extend({
         return options;
     },
 
-    permissible: function permissible(postModelOrId, action, context, loadedPermissions, hasUserPermission, hasAppPermission) {
+    permissible: function permissible(postModelOrId, action, context, unsafeAttrs, loadedPermissions, hasUserPermission, hasAppPermission) {
         // CASE: external is only allowed to add and edit subscribers
         if (context.external) {
             if (['add', 'edit'].indexOf(action) !== -1) {
@@ -72,7 +71,7 @@ Subscriber = ghostBookshelf.Model.extend({
             return Promise.resolve();
         }
 
-        return Promise.reject(new errors.NoPermissionError(i18n.t('errors.models.subscriber.notEnoughPermission')));
+        return Promise.reject(new common.errors.NoPermissionError({message: common.i18n.t('errors.models.subscriber.notEnoughPermission')}));
     },
 
     // TODO: This is a copy paste of models/user.js!

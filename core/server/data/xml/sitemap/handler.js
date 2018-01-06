@@ -1,9 +1,9 @@
 var _       = require('lodash'),
-    utils   = require('../../../utils'),
+    config  = require('../../../config'),
     sitemap = require('./index');
 
 // Responsible for handling requests for sitemap files
-module.exports = function handler(blogApp) {
+module.exports = function handler(siteApp) {
     var resourceTypes = ['posts', 'authors', 'tags', 'pages'],
         verifyResourceType = function verifyResourceType(req, res, next) {
             if (!_.includes(resourceTypes, req.params.resource)) {
@@ -16,11 +16,11 @@ module.exports = function handler(blogApp) {
             return sitemap.getSiteMapXml(type, page);
         };
 
-    blogApp.get('/sitemap.xml', function sitemapXML(req, res, next) {
+    siteApp.get('/sitemap.xml', function sitemapXML(req, res, next) {
         var siteMapXml = sitemap.getIndexXml();
 
         res.set({
-            'Cache-Control': 'public, max-age=' + utils.ONE_HOUR_S,
+            'Cache-Control': 'public, max-age=' + config.get('caching:sitemap:maxAge'),
             'Content-Type': 'text/xml'
         });
 
@@ -39,13 +39,13 @@ module.exports = function handler(blogApp) {
         }
     });
 
-    blogApp.get('/sitemap-:resource.xml', verifyResourceType, function sitemapResourceXML(req, res, next) {
+    siteApp.get('/sitemap-:resource.xml', verifyResourceType, function sitemapResourceXML(req, res, next) {
         var type = req.params.resource,
             page = 1,
             siteMapXml = getResourceSiteMapXml(type, page);
 
         res.set({
-            'Cache-Control': 'public, max-age=' + utils.ONE_HOUR_S,
+            'Cache-Control': 'public, max-age=' + config.get('caching:sitemap:maxAge'),
             'Content-Type': 'text/xml'
         });
 

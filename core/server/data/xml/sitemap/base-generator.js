@@ -1,11 +1,11 @@
-var _         = require('lodash'),
-    xml       = require('xml'),
-    moment    = require('moment'),
-    config    = require('../../../config'),
-    events    = require('../../../events'),
-    utils     = require('./utils'),
-    Promise   = require('bluebird'),
-    path      = require('path'),
+var _ = require('lodash'),
+    xml = require('xml'),
+    moment = require('moment'),
+    Promise = require('bluebird'),
+    path = require('path'),
+    urlService = require('../../../services/url'),
+    common = require('../../../lib/common'),
+    localUtils = require('./utils'),
     CHANGE_FREQ = 'weekly',
     XMLNS_DECLS;
 
@@ -22,7 +22,7 @@ function BaseSiteMapGenerator() {
     this.nodeLookup = {};
     this.nodeTimeLookup = {};
     this.siteMapContent = '';
-    this.dataEvents = events;
+    this.dataEvents = common.events;
 }
 
 _.extend(BaseSiteMapGenerator.prototype, {
@@ -92,7 +92,7 @@ _.extend(BaseSiteMapGenerator.prototype, {
             };
 
         // Return the xml
-        return utils.getDeclarations() + xml(data);
+        return localUtils.getDeclarations() + xml(data);
     },
 
     updateXmlFromNodes: function (urlElements) {
@@ -133,11 +133,11 @@ _.extend(BaseSiteMapGenerator.prototype, {
     },
 
     getUrlForDatum: function () {
-        return config.urlFor('home', true);
+        return urlService.utils.urlFor('home', true);
     },
 
     getUrlForImage: function (image) {
-        return config.urlFor('image', {image: image}, true);
+        return urlService.utils.urlFor('image', {image: image}, true);
     },
 
     getPriorityForDatum: function () {
@@ -178,7 +178,7 @@ _.extend(BaseSiteMapGenerator.prototype, {
 
     createImageNodeFromDatum: function (datum) {
         // Check for cover first because user has cover but the rest only have image
-        var image = datum.cover || datum.image,
+        var image = datum.cover_image || datum.profile_image || datum.feature_image,
             imageUrl,
             imageEl;
 

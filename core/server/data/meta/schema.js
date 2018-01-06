@@ -1,7 +1,6 @@
 var config = require('../../config'),
-    hbs = require('express-hbs'),
-    socialUrls = require('../../utils/social-urls'),
-    escapeExpression = hbs.handlebars.Utils.escapeExpression,
+    escapeExpression = require('../../services/themes/engine').escapeExpression,
+    social = require('../../lib/social'),
     _ = require('lodash');
 
 function schemaImageObject(metaDataVal) {
@@ -44,20 +43,20 @@ function trimSameAs(data, context) {
             sameAs.push(escapeExpression(data.post.author.website));
         }
         if (data.post.author.facebook) {
-            sameAs.push(socialUrls.facebookUrl(data.post.author.facebook));
+            sameAs.push(social.urls.facebook(data.post.author.facebook));
         }
         if (data.post.author.twitter) {
-            sameAs.push(socialUrls.twitterUrl(data.post.author.twitter));
+            sameAs.push(social.urls.twitter(data.post.author.twitter));
         }
     } else if (context === 'author') {
         if (data.author.website) {
             sameAs.push(escapeExpression(data.author.website));
         }
         if (data.author.facebook) {
-            sameAs.push(socialUrls.facebookUrl(data.author.facebook));
+            sameAs.push(social.urls.facebook(data.author.facebook));
         }
         if (data.author.twitter) {
-            sameAs.push(socialUrls.twitterUrl(data.author.twitter));
+            sameAs.push(social.urls.twitter(data.author.twitter));
         }
     }
 
@@ -65,8 +64,9 @@ function trimSameAs(data, context) {
 }
 
 function getPostSchema(metaData, data) {
-    var description = metaData.metaDescription ? escapeExpression(metaData.metaDescription) :
-        (metaData.excerpt ? escapeExpression(metaData.excerpt) : null),
+    // CASE: metaData.excerpt for post context is populated by either the custom excerpt, the meta description,
+    // or the automated excerpt of 50 words. It is empty for any other context.
+    var description = metaData.excerpt ? escapeExpression(metaData.excerpt) : null,
         schema;
 
     schema = {
@@ -83,9 +83,9 @@ function getPostSchema(metaData, data) {
             image: schemaImageObject(metaData.authorImage),
             url: metaData.authorUrl,
             sameAs: trimSameAs(data, 'post'),
-            description: data.post.author.bio ?
-            escapeExpression(data.post.author.bio) :
-            null
+            description: data.post.author.metaDescription ?
+                escapeExpression(data.post.author.metaDescription) :
+                null
         },
         headline: escapeExpression(metaData.metaTitle),
         url: metaData.url,
@@ -120,8 +120,8 @@ function getHomeSchema(metaData) {
             '@id': metaData.blog.url || null
         },
         description: metaData.metaDescription ?
-        escapeExpression(metaData.metaDescription) :
-        null
+            escapeExpression(metaData.metaDescription) :
+            null
     };
     return trimSchema(schema);
 }
@@ -143,8 +143,8 @@ function getTagSchema(metaData, data) {
             '@id': metaData.blog.url || null
         },
         description: metaData.metaDescription ?
-        escapeExpression(metaData.metaDescription) :
-        null
+            escapeExpression(metaData.metaDescription) :
+            null
     };
 
     return trimSchema(schema);
@@ -163,8 +163,8 @@ function getAuthorSchema(metaData, data) {
             '@id': metaData.blog.url || null
         },
         description: metaData.metaDescription ?
-        escapeExpression(metaData.metaDescription) :
-        null
+            escapeExpression(metaData.metaDescription) :
+            null
     };
 
     return trimSchema(schema);

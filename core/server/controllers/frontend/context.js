@@ -12,12 +12,12 @@
  */
 
 var config = require('../../config'),
+    labs = require('../../services/labs'),
 
     // Context patterns, should eventually come from Channel configuration
-    privatePattern = new RegExp('^\\/' + config.routeKeywords.private + '\\/'),
-    subscribePattern = new RegExp('^\\/' + config.routeKeywords.subscribe + '\\/'),
-    ampPattern = new RegExp('\\/' + config.routeKeywords.amp + '\\/$'),
-    rssPattern = new RegExp('^\\/rss\\/'),
+    privatePattern = new RegExp('^\\/' + config.get('routeKeywords').private + '\\/'),
+    subscribePattern = new RegExp('^\\/' + config.get('routeKeywords').subscribe + '\\/'),
+    ampPattern = new RegExp('\\/' + config.get('routeKeywords').amp + '\\/$'),
     homePattern = new RegExp('^\\/$');
 
 function setResponseContext(req, res, data) {
@@ -41,22 +41,17 @@ function setResponseContext(req, res, data) {
         res.locals.context.push('home');
     }
 
-    // This is not currently used, as setRequestContext is not called for RSS feeds
-    if (rssPattern.test(res.locals.relativeUrl)) {
-        res.locals.context.push('rss');
-    }
-
     // Add context 'amp' to either post or page, if we have an `*/amp` route
     if (ampPattern.test(res.locals.relativeUrl) && data.post) {
         res.locals.context.push('amp');
     }
 
     // Each page can only have at most one of these
-    if (req.channelConfig) {
-        res.locals.context.push(req.channelConfig.name);
+    if (res.locals.channel) {
+        res.locals.context = res.locals.context.concat(res.locals.channel.context);
     } else if (privatePattern.test(res.locals.relativeUrl)) {
         res.locals.context.push('private');
-    } else if (subscribePattern.test(res.locals.relativeUrl)) {
+    } else if (subscribePattern.test(res.locals.relativeUrl) && labs.isSet('subscribers') === true) {
         res.locals.context.push('subscribe');
     } else if (data && data.post && data.post.page) {
         res.locals.context.push('page');
