@@ -1,7 +1,7 @@
 {
-  "name": "www.zacorndorff.com",
+  "name": "www",
   "version": "1.0.0",
-  "description": "personal site generator",
+  "description": "zaco .com",
   "author": "Zac O <zorndorff@gmail.com>",
   "private": true,
   "scripts": {

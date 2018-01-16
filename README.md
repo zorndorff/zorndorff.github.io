@@ -1,6 +1,6 @@
-# www.zacorndorff.com
+# www
 
-> personal site generator
+> zaco .com
 
 ## Build Setup
 
