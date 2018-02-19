@@ -1,17 +1,15 @@
 <template>
   <section class="container">
     <div>
-
+      <h1>Welcome</h1>
+      <p>This is something.</p>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
 
 export default {
-  components: {
-    AppLogo
-  }
+  components: {}
 }
 </script>
