@@ -3,19 +3,13 @@
 
 name = "Term"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
-description = ""
-homepage = "http://example.com/"
+licenselink = "https://git.zaco.guru/zac/www/blob/master/LICENSE.md"
+description = "Basic theme"
+homepage = "https://zacorndorff.com/"
 tags = []
 features = []
 min_version = "0.36.1"
 
 [author]
-  name = ""
-  homepage = ""
-
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "ZacOrndorff"
+  homepage = "zacorndorff.com"
