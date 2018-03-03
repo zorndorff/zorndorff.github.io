@@ -13,3 +13,8 @@ min_version = "0.36.1"
 [author]
   name = "ZacOrndorff"
   homepage = "zacorndorff.com"
+
+[original]
+  name = "blank"
+  homepage = "https://github.com/vimux""
+  repo = "https://github.com/vimux/blank/"

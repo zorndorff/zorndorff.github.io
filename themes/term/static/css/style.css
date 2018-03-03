@@ -1,0 +1,35 @@
+body{
+	background-color: #34495e;
+	color: #2ecc71;
+	font-size: 16px;
+	font-family: "Courier New", Courier, monospace;
+}
+a {
+	color: #2ecc71;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+        "header header"
+        "main aside"
+        "footer footer";
+    grid-gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+header {
+    grid-area: header;
+}
+.main {
+    grid-area: main;
+}
+.aside {
+    grid-area: sidebar;
+}
+footer {
+    grid-area: footer;
+}
