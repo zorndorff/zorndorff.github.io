@@ -3,17 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zacorndorff.com/categories/</loc>
+    <loc>https://www.zacorndorff.com/about/</loc>
+    <lastmod>2018-03-08T13:32:25-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zacorndorff.com/posts/my-first-post/</loc>
+    <lastmod>2018-02-19T12:09:01-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zacorndorff.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://zacorndorff.com/tags/</loc>
+    <loc>https://www.zacorndorff.com/</loc>
+    <lastmod>2018-02-19T12:09:01-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://zacorndorff.com/</loc>
+    <loc>https://www.zacorndorff.com/posts/</loc>
+    <lastmod>2018-02-19T12:09:01-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.zacorndorff.com/tags/</loc>
     <priority>0</priority>
   </url>
   

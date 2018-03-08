@@ -1,9 +1,55 @@
+html {
+  box-sizing: border-box;
+}
+
 body{
-	background-color: #34495e;
-	color: #2ecc71;
+	background-color: #000;
+	color: #00ff00;
 	font-size: 16px;
 	font-family: "Courier New", Courier, monospace;
 }
+
 a {
-	color: #2ecc71;
+	color: #00ff00;
+}
+
+.content{
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+	flex-direction: row;
+}
+header, footer{
+	width: 100%;
+}
+main, aside, .flex-item{
+	flex: 1 100%;
+}
+
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+
+}
+
+/* Large screens */
+@media all and (min-width: 800px) {
+	header {
+		position: static;
+		top: 0px;
+	}
+	footer{
+		position: static;
+		bottom:0px;
+	}
+	main{
+		flex: 3 auto;
+	}
+	aside{
+		flex: 1 auto;
+	}
 }
