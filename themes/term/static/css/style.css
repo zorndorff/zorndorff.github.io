@@ -15,10 +15,12 @@ a {
         "header header"
         "main aside"
         "footer footer";
-    grid-gap: 30px;
+    grid-gap: 0.5em;
+    /*
+    min-height: 100vh;
+     */
     max-width: 800px;
     margin: 0 auto;
-    min-height: 100vh;
 }
 
 header {
@@ -32,4 +34,5 @@ header {
 }
 footer {
     grid-area: footer;
+    
 }
