@@ -1,9 +1,9 @@
 	<aside>
 		<h3>Posts</h3>
-		<ul class="posts list">
+		<div class="flex-container posts list">
 			{{ range first 5 .Site.Pages }}
-			<li class="list-item"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+			<div class="list-item"><a href="{{ .Permalink }}">{{ .Title }}</a></div>
 			{{ end }}
-		</ul>
+		</div>
 	</aside>
 </div>

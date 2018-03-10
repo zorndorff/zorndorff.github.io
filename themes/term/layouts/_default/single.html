@@ -7,14 +7,11 @@
 				{{ .Content }}
 			</div>
 			<div>
-				<ul id="tags">
+				<div id="tags" class="flex-container list-horizontal">
 					{{ range .Params.tags }}
-					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+					<div class="list-item"><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </div>
 					{{ end }}
 				</ul>
-			</div>
-			<div>
-				{{ template "_internal/disqus.html" . }}
 			</div>
 		</article>
 	</main>

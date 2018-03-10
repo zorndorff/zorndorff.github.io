@@ -7,7 +7,11 @@
 				<a href="{{ .Permalink }}">Read more...</a>
 			{{ end }}
 		</div>
+		<div class="flex-container list list-horizontal">
 		{{ range .Params.tags }}
-		<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+			<div class="list-item">
+				<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+			</div>
 		{{ end }}
+		</div>
 	</article>

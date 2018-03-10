@@ -12,14 +12,12 @@
 	{{ .Hugo.Generator }}
 </head>
 <body>
-	<header>
-		<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-		<nav>
-			<ul>
-				{{ range .Site.Menus.main }}
-				<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
-				{{ end }}
-			</ul>
+	<header class="flex-container content">
+		<nav class="flex-container list list-horizontal">
+			<div class="list-item"> <a href="{{ .Site.BaseURL }}">Root</a></div>
+			{{ range .Site.Menus.main }}
+			<div class="list-item padl"><a href="{{ .URL | relURL }}">{{ .Name }}</a></div>
+			{{ end }}
 		</nav>
 	</header>
-	<div class="flex-container">
+	<div class="flex-container content">
