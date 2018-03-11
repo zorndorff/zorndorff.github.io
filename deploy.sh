@@ -1,5 +1,6 @@
 #!/bin/sh
-BUILD_TIME = `date`
+
+BUILD_TIME=`date`
 
 echo Generating new pages
 
