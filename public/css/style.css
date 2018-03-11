@@ -16,6 +16,7 @@ a {
 .content{
     max-width: 1080px;
     margin: 0 auto;
+    padding: 0.5em;
 }
 
 .flex-container {
@@ -23,14 +24,27 @@ a {
     flex-flow: row wrap;
 	flex-direction: row;
 }
+
 header, footer{
 	width: 100%;
 }
 main, aside, .flex-item{
-	flex: 1 100%;
+	flex-grow: 1;
+	flex-basis: 100%;
 }
 
-
+.flex-container.list{
+	flex-direction: column;
+}
+.flex-container.list.list-horizontal{
+	flex-direction: row;
+}
+.list .list-item{
+	margin: 0.5em 0;
+}
+.padl {
+	padding-left: 0.5em;
+}
 /* Medium screens */
 @media all and (min-width: 600px) {
 
@@ -47,9 +61,9 @@ main, aside, .flex-item{
 		bottom:0px;
 	}
 	main{
-		flex: 3 auto;
+		flex: 3 0px;
 	}
 	aside{
-		flex: 1 auto;
+		flex: 1 0px;
 	}
 }
