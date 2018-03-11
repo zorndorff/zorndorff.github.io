@@ -1,4 +1,4 @@
-baseURL = "https://zorndorff.github.io"
+baseURL = "https://zorndorff.github.io/blogotron/"
 languageCode = "en-us"
 title = "Now with more interwebs."
 theme = "term"
