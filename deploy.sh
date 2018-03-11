@@ -7,9 +7,9 @@ hugo
 
 echo Committing changes
 
-git add public/ 
+git add docs/ 
 
-git commit public/ -m "Content Update $BUILD_TIME"
+git commit docs/ -m "Content Update $BUILD_TIME"
 
 git push origin
 
