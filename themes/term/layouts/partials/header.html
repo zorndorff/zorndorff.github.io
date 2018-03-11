@@ -16,7 +16,7 @@
 		<nav class="flex-container list list-horizontal">
 			<div class="list-item"> <a href="{{ .Site.BaseURL }}">Root</a></div>
 			{{ range .Site.Menus.main }}
-			<div class="list-item padl"><a href="{{ .URL | relURL }}">{{ .Name }}</a></div>
+			<div class="list-item padl"><a href="{{ .URL }}">{{ .Name }}</a></div>
 			{{ end }}
 		</nav>
 	</header>
