@@ -6,17 +6,26 @@
     <description>Recent content in Tags on Now with more interwebs.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Feb 2018 12:09:01 -0600</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 12:09:01 -0600</lastBuildDate>
     
 	<atom:link href="https://zorndorff.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Random</title>
-      <link>https://zorndorff.github.io/tags/random/</link>
-      <pubDate>Mon, 19 Feb 2018 12:09:01 -0600</pubDate>
+      <title>Gettingstarted</title>
+      <link>https://zorndorff.github.io/tags/gettingstarted/</link>
+      <pubDate>Thu, 02 Aug 2018 12:09:01 -0600</pubDate>
       
-      <guid>https://zorndorff.github.io/tags/random/</guid>
+      <guid>https://zorndorff.github.io/tags/gettingstarted/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Posts</title>
+      <link>https://zorndorff.github.io/tags/posts/</link>
+      <pubDate>Thu, 02 Aug 2018 12:09:01 -0600</pubDate>
+      
+      <guid>https://zorndorff.github.io/tags/posts/</guid>
       <description></description>
     </item>
     

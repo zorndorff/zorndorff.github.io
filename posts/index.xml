@@ -6,18 +6,20 @@
     <description>Recent content in Posts on Now with more interwebs.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Feb 2018 12:09:01 -0600</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 12:09:01 -0600</lastBuildDate>
     
 	<atom:link href="https://zorndorff.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>First Post - Please Ignore</title>
-      <link>https://zorndorff.github.io/posts/first-post-please-ignore/</link>
-      <pubDate>Mon, 19 Feb 2018 12:09:01 -0600</pubDate>
+      <title>Getting Started</title>
+      <link>https://zorndorff.github.io/posts/getting-started/</link>
+      <pubDate>Thu, 02 Aug 2018 12:09:01 -0600</pubDate>
       
-      <guid>https://zorndorff.github.io/posts/first-post-please-ignore/</guid>
-      <description>Well , I&amp;rsquo;ve finally decided what I&amp;rsquo;m going to post here. The answer is: anything I damn well please. On day 3 of Whole30, working on a kubernetes migration project. I have a lot on my mind and very little concern whether anyone really reads any of this. Maybe I&amp;rsquo;ll do a write up on how this site is built eventually. Until then, enjoy my random thoughts.</description>
+      <guid>https://zorndorff.github.io/posts/getting-started/</guid>
+      <description>Hey there, you&amp;rsquo;ve landed on my personal website.
+##Welcome!##
+I&amp;rsquo;ll be using this space to host my random experiments and ramblings. Follow along as I experience the joy of planning and hacking on random side projects.</description>
     </item>
     
   </channel>
