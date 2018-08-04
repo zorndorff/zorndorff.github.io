@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Now with more interwebs.</title>
-    <link>https://zorndorff.github.io/posts/</link>
-    <description>Recent content in Posts on Now with more interwebs.</description>
+    <title>Projects on Now with more interwebs.</title>
+    <link>https://zorndorff.github.io/tags/projects/</link>
+    <description>Recent content in Projects on Now with more interwebs.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Aug 2018 14:46:05 -0500</lastBuildDate>
     
-	<atom:link href="https://zorndorff.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zorndorff.github.io/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,17 +19,6 @@
       <guid>https://zorndorff.github.io/posts/starting-cafenet/</guid>
       <description>I&amp;rsquo;ve always wanted to start a project that could be considered a real contribution to my community. However, this is somewhat difficult without a lot of free time on your hands. That being said, I&amp;rsquo;m currently in staycation mode between jobs so I decided to hack together a service to address a need in my local area.
 The Problem Semi-skilled service workers require training and experience to be effective. Conversely, these jobs are typically lower wage part-time jobs that are looked at as a transitional position.</description>
-    </item>
-    
-    <item>
-      <title>Getting Started</title>
-      <link>https://zorndorff.github.io/posts/getting-started/</link>
-      <pubDate>Thu, 02 Aug 2018 12:09:01 -0600</pubDate>
-      
-      <guid>https://zorndorff.github.io/posts/getting-started/</guid>
-      <description>Hey there, you&amp;rsquo;ve landed on my personal website.
-##Welcome!##
-I&amp;rsquo;ll be using this space to host my random experiments and ramblings. Follow along as I experience the joy of planning and hacking on random side projects.</description>
     </item>
     
   </channel>
