@@ -6,10 +6,20 @@
     <description>Recent content on Now with more interwebs.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Aug 2018 14:46:05 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 05 Aug 2018 09:35:40 -0500</lastBuildDate>
     
 	<atom:link href="https://zorndorff.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Starting FeedMachine</title>
+      <link>https://zorndorff.github.io/posts/projects/starting_feedmachine/</link>
+      <pubDate>Sun, 05 Aug 2018 09:35:40 -0500</pubDate>
+      
+      <guid>https://zorndorff.github.io/posts/projects/starting_feedmachine/</guid>
+      <description>awesomefeedmachine.com has been a side project of mine ever since google shutdown their rss service. I&amp;rsquo;ll be documenting my work on this project here. Now of course there are numerous rss readers apps out there, I just want to try rolling my own.
+The Problem I haven&amp;rsquo;t yet completed a full rss reader project after years of tinkering. Unless you count my original version which I&amp;rsquo;ve lost the code for.</description>
+    </item>
     
     <item>
       <title>Starting Cafenet</title>
