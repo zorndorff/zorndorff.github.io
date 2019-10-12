@@ -18,12 +18,12 @@
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/categories/kubernetes/</loc>
+    <loc>https://zorndorff.github.io/tags/kubernetes/</loc>
     <lastmod>2019-05-28T23:06:03-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/tags/kubernetes/</loc>
+    <loc>https://zorndorff.github.io/categories/kubernetes/</loc>
     <lastmod>2019-05-28T23:06:03-05:00</lastmod>
   </url>
   
@@ -33,7 +33,7 @@
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/posts/</loc>
+    <loc>https://zorndorff.github.io/projects/</loc>
     <lastmod>2019-05-28T23:06:03-05:00</lastmod>
   </url>
   
@@ -48,7 +48,7 @@
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/posts/projects/kubernetes-k3s-home-assistant/</loc>
+    <loc>https://zorndorff.github.io/projects/kubernetes-k3s-home-assistant/</loc>
     <lastmod>2019-05-28T23:06:03-05:00</lastmod>
   </url>
   
@@ -58,22 +58,22 @@
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/posts/projects/home_lab_cluster/</loc>
+    <loc>https://zorndorff.github.io/projects/home_lab_cluster/</loc>
     <lastmod>2019-03-31T12:09:01-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/posts/projects/starting_feedmachine/</loc>
+    <loc>https://zorndorff.github.io/projects/starting_feedmachine/</loc>
     <lastmod>2018-08-05T09:35:40-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/posts/starting-cafenet/</loc>
+    <loc>https://zorndorff.github.io/starting-cafenet/</loc>
     <lastmod>2018-08-04T14:46:05-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zorndorff.github.io/posts/getting-started/</loc>
+    <loc>https://zorndorff.github.io/getting-started/</loc>
     <lastmod>2018-08-02T12:09:01-06:00</lastmod>
   </url>
   
