@@ -33,7 +33,7 @@ time{
   padding: 0.5em;
 }
 pre{
-  background: #000;
+  background: #333;
   padding: 1em;
   color: green;
   border-radius: 10px;
@@ -85,4 +85,12 @@ main, aside, .flex-item{
 	aside{
 		flex: 1 0px;
 	}
+}
+
+
+/* Game */
+#conways{
+  background: blue;
+  height: 500px;
+  width: 500px;
 }

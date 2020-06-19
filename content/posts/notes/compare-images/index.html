@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Compare installed packages between 2 docker images.</title>
+	
+	
+  <link rel="stylesheet" href="/css/main.css"/>
+	
+</head>
+<body>
+	<header class="flex-container content">
+		<nav class="flex-container list list-horizontal">
+			
+			<div class="list-item padl"><a href="/">Zac Orndorff</a></div>
+			
+		</nav>
+	</header>
+	<div class="flex-container content">
+
+	<main>
+		<article>
+			<h1>Compare installed packages between 2 docker images.</h1>
+			<div>
+				<h2 id="why">Why?</h2>
+<p>An, eventually abandoned, attempt to transition from <code>node: x,x,x</code> to <code>node: x,x,x-slim</code>. I needed to determine which packages were excluded in the node - slim image.</p>
+<p>Given any two images, I use this script to compare the installed packages. This works with debian based images.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">IMAGE_ONE<span style="color:#f92672">=</span>node:lts
+IMAGE_TWO<span style="color:#f92672">=</span>node:lts-slim
+
+comm -23 &lt;<span style="color:#f92672">(</span>sort &lt;<span style="color:#f92672">(</span>docker run $IMAGE_ONE apt list --installed<span style="color:#f92672">))</span> &lt;<span style="color:#f92672">(</span>sort &lt;<span style="color:#f92672">(</span>docker run $IMAGE_TWO apt list --installed<span style="color:#f92672">))</span>
+</code></pre></div><p>This will list out the packages present in &ldquo;Image_One&rdquo; and not &ldquo;Image_Two&rdquo;.</p>
+
+			</div>
+			<div>
+				<div id="tags" class="flex-container list-horizontal">
+					
+				</ul>
+			</div>
+			<time>01.01.0001 00:00</time>
+		</article>
+	</main>
+		<footer class="flex-container content">
+			<p>2020</p>
+    </footer>
+    <script type="text/javascript" src="/js/main.js" > </script>
+	</body>
+</html>
+

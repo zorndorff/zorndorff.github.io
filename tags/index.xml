@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Now with more interwebs.</title>
@@ -6,64 +6,9 @@
     <description>Recent content in Tags on Now with more interwebs.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2019 23:06:03 -0500</lastBuildDate>
     
 	<atom:link href="https://zorndorff.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>fun</title>
-      <link>https://zorndorff.github.io/tags/fun/</link>
-      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
-      
-      <guid>https://zorndorff.github.io/tags/fun/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>k3s</title>
-      <link>https://zorndorff.github.io/tags/k3s/</link>
-      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
-      
-      <guid>https://zorndorff.github.io/tags/k3s/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://zorndorff.github.io/tags/kubernetes/</link>
-      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
-      
-      <guid>https://zorndorff.github.io/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>projects</title>
-      <link>https://zorndorff.github.io/tags/projects/</link>
-      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
-      
-      <guid>https://zorndorff.github.io/tags/projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GettingStarted</title>
-      <link>https://zorndorff.github.io/tags/gettingstarted/</link>
-      <pubDate>Thu, 02 Aug 2018 12:09:01 -0600</pubDate>
-      
-      <guid>https://zorndorff.github.io/tags/gettingstarted/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Posts</title>
-      <link>https://zorndorff.github.io/tags/posts/</link>
-      <pubDate>Thu, 02 Aug 2018 12:09:01 -0600</pubDate>
-      
-      <guid>https://zorndorff.github.io/tags/posts/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Now with more interwebs.</title>
@@ -6,35 +6,34 @@
     <description>Recent content in Categories on Now with more interwebs.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2019 23:06:03 -0500</lastBuildDate>
     
 	<atom:link href="https://zorndorff.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>kubernetes</title>
-      <link>https://zorndorff.github.io/categories/kubernetes/</link>
-      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
+      <title>cli</title>
+      <link>https://zorndorff.github.io/categories/cli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zorndorff.github.io/categories/kubernetes/</guid>
+      <guid>https://zorndorff.github.io/categories/cli/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>projects</title>
-      <link>https://zorndorff.github.io/categories/projects/</link>
-      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
+      <title>docker</title>
+      <link>https://zorndorff.github.io/categories/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zorndorff.github.io/categories/projects/</guid>
+      <guid>https://zorndorff.github.io/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>GettingStarted</title>
-      <link>https://zorndorff.github.io/categories/gettingstarted/</link>
-      <pubDate>Thu, 02 Aug 2018 12:09:01 -0600</pubDate>
+      <title>fun</title>
+      <link>https://zorndorff.github.io/categories/fun/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zorndorff.github.io/categories/gettingstarted/</guid>
+      <guid>https://zorndorff.github.io/categories/fun/</guid>
       <description></description>
     </item>
     
