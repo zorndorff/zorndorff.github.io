@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Now with more interwebs.</title>
+    <link>https://zorndorff.github.io/categories/</link>
+    <description>Recent content in Categories on Now with more interwebs.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zorndorff.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>k8s</title>
+      <link>https://zorndorff.github.io/categories/k8s/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://zorndorff.github.io/categories/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projects</title>
+      <link>https://zorndorff.github.io/categories/projects/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://zorndorff.github.io/categories/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rpi</title>
+      <link>https://zorndorff.github.io/categories/rpi/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://zorndorff.github.io/categories/rpi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>https://zorndorff.github.io/categories/rust/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://zorndorff.github.io/categories/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://zorndorff.github.io/categories/kubernetes/</link>
+      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
+      
+      <guid>https://zorndorff.github.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

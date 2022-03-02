@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on Now with more interwebs.</title>
+    <link>https://zorndorff.github.io/categories/rust/</link>
+    <description>Recent content in rust on Now with more interwebs.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zorndorff.github.io/categories/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Running Rust on Arm with docker</title>
+      <link>https://zorndorff.github.io/posts/projects/rust-api-server-on-arm/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://zorndorff.github.io/posts/projects/rust-api-server-on-arm/</guid>
+      <description>I have a small home lab kubernetes cluster running k3s from rancher labs. As part of that deployment, the traefik ingress controller is included. This post is first in a series where I muddle through exploring the traefik ingress using a rust webserver.
+Covered in this post.  Rust workloads on k8s with ARM and Docker.  What will be running? Since my home lab cluster runs on 4 raspberry pi&amp;rsquo;s, some work will be needed to get a properly formatted image.</description>
+    </item>
+    
+  </channel>
+</rss>

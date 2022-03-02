@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fun on Now with more interwebs.</title>
+    <link>https://zorndorff.github.io/tags/fun/</link>
+    <description>Recent content in fun on Now with more interwebs.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 May 2019 23:06:03 -0500</lastBuildDate><atom:link href="https://zorndorff.github.io/tags/fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Run home assistant in k3s - IOT for everyone</title>
+      <link>https://zorndorff.github.io/posts/projects/kubernetes-k3s-home-assistant/</link>
+      <pubDate>Tue, 28 May 2019 23:06:03 -0500</pubDate>
+      
+      <guid>https://zorndorff.github.io/posts/projects/kubernetes-k3s-home-assistant/</guid>
+      <description>As a new home owner and nerd, I&amp;rsquo;ve been leaning into the &amp;ldquo;smart home&amp;rdquo; trend. Naturally, this makes for a great excuse to tinker with the latest IOT technology and to experiment with distributed computing. What better test bed for working with the &amp;lsquo;Service Mesh&amp;rsquo; than coordinating micro-computer devices and sensors? To that end, I&amp;rsquo;ve chosen to use Rancher&amp;rsquo;s IOT focused kubernetes distribution k3s. I plan to write more about my setup in the future but, for now I&amp;rsquo;d just like to share my configuration for running the HomeAssistant platform on kubernetes cluster with a zwave gateway.</description>
+    </item>
+    
+  </channel>
+</rss>

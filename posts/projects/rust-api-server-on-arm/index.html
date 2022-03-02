@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Running Rust on Arm with docker</title>
+	
+	
+  <link rel="stylesheet" href="/css/main.css"/>
+	
+</head>
+<body>
+	<header class="flex-container content">
+		<nav class="flex-container list list-horizontal">
+			
+			<div class="list-item padl"><a href="/">Home</a></div>
+			
+		</nav>
+	</header>
+	<div class="flex-container content">
+
+	<main>
+		<article>
+			<h1>Running Rust on Arm with docker</h1>
+			<div>
+				<p>I have a small home lab kubernetes cluster running k3s from rancher labs. As part of that deployment, the traefik ingress controller is included. This post is first in a series where I muddle through exploring the traefik ingress using a rust webserver.</p>
+<h3 id="covered-in-this-post">Covered in this post.</h3>
+<ul>
+<li>Rust workloads on k8s with ARM and Docker.</li>
+</ul>
+<h3 id="what-will-be-running">What will be running?</h3>
+<p>Since my home lab cluster runs on 4 raspberry pi&rsquo;s, some work will be needed to get a properly formatted image. For this I&rsquo;ll be using docker buildx to build our images for multiple targets.
+This post will review the steps needed to get a working docker image deployed onto an ARM cluster using docker and kubernetes.</p>
+<p>Setup <a href="https://www.docker.com/blog/getting-started-with-docker-for-arm-on-linux/">buildx</a> for Arm Images.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># enable experimental buildx commands.</span>
+export DOCKER_CLI_EXPERIMENTAL<span style="color:#f92672">=</span>enabled
+<span style="color:#75715e"># enable arm64 containers on your local machine through qemo.</span>
+docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447ad3
+<span style="color:#75715e"># create builder</span>
+docker buildx create --name arm-builder
+</code></pre></div><p>Dockerfile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> rustlang/rust:nightly-slim as builder</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/ping-server</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cargo install --path .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> debian:buster-slim</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>builder /usr/local/cargo/bin/ping-server /usr/local/bin/ping-server<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;ping-server&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Feel free to modify this for your own use, it should work with the <a href="https://github.com/zorndorff/rust-ping-server">example repo</a></p>
+<p>Building the included Rust language docker image + echo server.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#75715e"># enable experimental buildx commands.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>export DOCKER_CLI_EXPERIMENTAL<span style="color:#f92672">=</span>enabled<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># enable arm64 containers on your local machine through qemo.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447ad3<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># create builder</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker buildx create --name arm-builder<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker buildx use pi-builder<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm/v6,linux/arm/arm64 -t us.gcr.io/orndorff-ops/rust-ping-server . --push<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div>
+			</div>
+			<div>
+				<div id="tags" class="flex-container list-horizontal">
+					
+				</ul>
+			</div>
+			<time>08.05.2020 00:00</time>
+		</article>
+	</main>
+		<footer class="flex-container content">
+			<p>2022</p>
+    </footer>
+    <script type="text/javascript" src="/js/main.js" > </script>
+	</body>
+</html>
+
